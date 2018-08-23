@@ -4,16 +4,14 @@ using UnityEngine;
 
 public class playerMovement : MonoBehaviour {
 
-	// Use this for initialization
+	public float maxSpeed = 10f;
 
-	
 	// Update is called once per frame
 	void Update() {
 
-		if (Input.GetKey (KeyCode.RightArrow))
-			transform.Translate (.125f, 0, 0);
-		if (Input.GetKey (KeyCode.LeftArrow))
-			transform.Translate (-.125f, 0, 0);
+
+		transform.Translate (Input.GetAxis ("Horizontal") * maxSpeed * Time.deltaTime, 0, 0);
+
 
 
 	}

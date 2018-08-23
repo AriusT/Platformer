@@ -9,11 +9,18 @@ public class goodJump : MonoBehaviour {
 
 	Rigidbody2D rb;
 
+	[Range(1, 10)]
+	public float jumpVelocity;
+
 	void Awake(){
 		rb = GetComponent<Rigidbody2D> ();
 	}
 
 	void Update(){
+		if (Input.GetButtonDown ("Jump")) {
+			rb.velocity = Vector2.up * jumpVelocity;
+		}
+
 		if (rb.velocity.y < 0) {
 			rb.velocity += Vector2.up * Physics2D.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
 		} else if (rb.velocity.y > 0 && !Input.GetButton ("Jump")) {
